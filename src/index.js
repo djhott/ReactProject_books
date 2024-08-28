@@ -25,6 +25,19 @@ const books = [
 
 //BookList example using map() function to update array since React will not just render objects
 //the map() function takes an arrow function that returns the component with destructured props
+//spread used
+function BookList() {
+  return (
+    <section className="booklist">
+      {books.map((book) => {
+        return <Book {...book} key={book.id} /> //spread operator ... to get all props passed down
+      })}
+    </section>
+  )
+}
+
+//no spread used
+/*
 const BookList = () => {
   return (
     <section className="booklist">
@@ -36,6 +49,7 @@ const BookList = () => {
     </section>
   )
 }
+*/
 
 //Book component is used in BookList, className "book" used for CSS
 //props not destructured
@@ -56,7 +70,7 @@ const Book = (props) => {
 //props destructured
 //Book component will display a single Book formated in our BookList
 const Book = (props) => {
-  const { img, title, author } = props
+  const { img, title, author } = props //props.book if you pass the entire book object
   return (
     <article className="book">
       <img src={img} alt={title} />
