@@ -5,22 +5,40 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 import './index.css'
-const author = 'Jordan Moore'
-const title = 'Interesting facts for Curious Minds'
-const img =
-  'https://images-na.ssl-images-amazon.com/images/I/71m+Qtq+HrL._AC_UL900_SR900,600_.jpg'
+
+const firstBook = {
+  author: 'Kristin Hannah',
+  title: 'The Women: A Novel',
+  img: './images/book-1.jpg',
+}
+const secondBook = {
+  author: 'Lisa Jewell',
+  title: 'Then She Was Gone: A Novel',
+  img: './images/book-2.jpg',
+}
 
 //props only renders what we pass, so author will not be displayed in the second Book
-function BookList() {
+const BookList = () => {
   return (
     <section className="booklist">
-      <Book author={author} title={title} img={img} />
-      <Book title={title} img={img} />
+      <Book
+        author={firstBook.author}
+        title={firstBook.title}
+        img={firstBook.img}
+      />
+      <Book
+        author={secondBook.author}
+        title={secondBook.title}
+        img={secondBook.img}
+      />
     </section>
   )
 }
 
 //Book component is used in BookList, className "book" used for CSS
+//props not destructured
+
+/*
 const Book = (props) => {
   console.log(props)
   return (
@@ -28,6 +46,19 @@ const Book = (props) => {
       <img src={props.img} alt={props.title} />
       <h2>{props.title}</h2>
       <h4>{props.author} </h4>
+    </article>
+  )
+}
+*/
+
+//props destructured
+const Book = (props) => {
+  const { img, title, author } = props
+  return (
+    <article className="book">
+      <img src={img} alt={title} />
+      <h2>{title}</h2>
+      <h4>{author} </h4>
     </article>
   )
 }
