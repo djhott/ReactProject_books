@@ -6,16 +6,20 @@ import ReactDOM from 'react-dom/client'
 
 import './index.css'
 
+//added id for key, always set the key where the iteration is occuring
+//only use index if the list will never change, otherwise, use id
 const books = [
   {
     author: 'Kristin Hannah',
     title: 'The Women: A Novel',
     img: './images/book-1.jpg',
+    id: 1,
   },
   {
     author: 'Lisa Jewell',
     title: 'Then She Was Gone: A Novel',
     img: './images/book-2.jpg',
+    id: 2,
   },
 ]
 
@@ -26,8 +30,8 @@ const BookList = () => {
     <section className="booklist">
       {books.map((book) => {
         console.log(book)
-        const { img, title, author } = book //destructure a single book
-        return <Book img={img} title={title} author={author} /> //call Book component and return the destructured props
+        const { img, title, author, id } = book //destructure a single book
+        return <Book img={img} title={title} author={author} key={id} /> //call Book component and return the destructured props
       })}
     </section>
   )
