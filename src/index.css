@@ -10,3 +10,36 @@ body {
   background: #f1f5f8;
   color: #222;
 }
+
+/*incorporate grid display and max width for the book list*/
+.booklist {
+  width: 90vw;
+  max-width: 1170px;
+  margin: 5rem auto;
+  display: grid;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .booklist {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/*style the book to center and fit to 100%*/
+.book {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.book img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.book h2 {
+  margin-top: 1rem;
+  font-size: 1rem;
+}

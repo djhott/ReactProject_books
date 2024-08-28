@@ -17,27 +17,24 @@ function BookList() {
   )
 }
 
-//Book component is used in BookList, className "book"
+//Book component is used in BookList, className "book" used for CSS
+const author = 'Jordan Moore'
 const Book = () => {
+  const title = 'Interesting Facts For Curious Mindssssss'
   return (
     <article className="book">
-      <Image />
-      <Title />
-      <Author />
+      <img
+        src="https://images-na.ssl-images-amazon.com/images/I/71m+Qtq+HrL._AC_UL900_SR900,600_.jpg"
+        alt="Interesting Facts For Curious Minds"
+      />
+      <h2>{title}</h2>
+
+      <h4>{author.toUpperCase()} </h4>
+      {/* <p>{let x = 6}</p> //statements don't work, only expressions, see next line*/}
+      {/*<p>{6 + 6}</p> //expressions because we need to return something, not statements*/}
     </article>
   )
 }
-
-const Image = () => (
-  <img
-    src="https://images-na.ssl-images-amazon.com/images/I/71m+Qtq+HrL._AC_UL900_SR900,600_.jpg"
-    alt="Interesting Facts For Curious Minds"
-  />
-)
-const Title = () => {
-  return <h2>Interesting Facts For Curious Minds</h2>
-}
-const Author = () => <h4>Jordan Moore </h4>
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
