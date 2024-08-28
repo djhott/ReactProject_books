@@ -6,31 +6,29 @@ import ReactDOM from 'react-dom/client'
 
 import './index.css'
 
-const firstBook = {
-  author: 'Kristin Hannah',
-  title: 'The Women: A Novel',
-  img: './images/book-1.jpg',
-}
-const secondBook = {
-  author: 'Lisa Jewell',
-  title: 'Then She Was Gone: A Novel',
-  img: './images/book-2.jpg',
-}
+const books = [
+  {
+    author: 'Kristin Hannah',
+    title: 'The Women: A Novel',
+    img: './images/book-1.jpg',
+  },
+  {
+    author: 'Lisa Jewell',
+    title: 'Then She Was Gone: A Novel',
+    img: './images/book-2.jpg',
+  },
+]
 
-//props only renders what we pass, so author will not be displayed in the second Book
+//BookList example using map() function to update array since React will not just render objects
+//the map() function takes an arrow function that returns the component with destructured props
 const BookList = () => {
   return (
     <section className="booklist">
-      <Book
-        author={firstBook.author}
-        title={firstBook.title}
-        img={firstBook.img}
-      />
-      <Book
-        author={secondBook.author}
-        title={secondBook.title}
-        img={secondBook.img}
-      />
+      {books.map((book) => {
+        console.log(book)
+        const { img, title, author } = book //destructure a single book
+        return <Book img={img} title={title} author={author} /> //call Book component and return the destructured props
+      })}
     </section>
   )
 }
@@ -52,6 +50,7 @@ const Book = (props) => {
 */
 
 //props destructured
+//Book component will display a single Book formated in our BookList
 const Book = (props) => {
   const { img, title, author } = props
   return (
