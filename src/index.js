@@ -26,11 +26,16 @@ const books = [
 //BookList example using map() function to update array since React will not just render objects
 //the map() function takes an arrow function that returns the component with destructured props
 //spread used
-function BookList() {
+const BookList = () => {
+  const getBook = (id) => {
+    const book = books.find((book) => book.id === id)
+    console.log(book)
+  }
+
   return (
     <section className="booklist">
       {books.map((book) => {
-        return <Book {...book} key={book.id} /> //spread operator ... to get all props passed down
+        return <Book {...book} key={book.id} getBook={getBook} />
       })}
     </section>
   )
@@ -70,12 +75,20 @@ const Book = (props) => {
 //props destructured
 //Book component will display a single Book formated in our BookList
 const Book = (props) => {
-  const { img, title, author } = props //props.book if you pass the entire book object
+  const { img, title, author, getBook, id } = props
+  // console.log(props);
+
+  //get single book returns using the getBook(id). This prevents immediate use if we just called getBook()
+  //in the onClick. However, this is clunky. Will update later with state.
+  const getSingleBook = () => {
+    getBook(id)
+  }
   return (
     <article className="book">
       <img src={img} alt={title} />
       <h2>{title}</h2>
-      <h4>{author} </h4>
+      <button onClick={getSingleBook}>display title</button>
+      <h4>{author}</h4>
     </article>
   )
 }
